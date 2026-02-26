@@ -72,6 +72,8 @@ export default [
       // React settings
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
+      "no-undef": "warn",
+      "no-case-declarations": "warn"
     },
     settings: {
       react: {

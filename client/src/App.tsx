@@ -95,7 +95,7 @@ function App() {
         try {
           res = JSON.stringify(result);
         }
-        catch(e) {
+        catch(_) {
           res = result.toString();
         }
         setWasmResult(`${label}: ${res}\nDuration: ${duration.toFixed(2)}ms`);
