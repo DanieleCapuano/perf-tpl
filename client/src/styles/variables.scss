@@ -1,0 +1,29 @@
+/**
+ * SCSS Variables
+ * Can be used with CSS preprocessor if needed
+ */
+
+// Colors
+$color-primary: #667eea;
+$color-primary-dark: #764ba2;
+$color-secondary: #f093fb;
+$color-accent: #4facfe;
+
+// Spacing
+$spacing-unit: 0.25rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Export as CSS custom properties as well
+:root {
+  --breakpoint-sm: #{$breakpoint-sm};
+  --breakpoint-md: #{$breakpoint-md};
+  --breakpoint-lg: #{$breakpoint-lg};
+  --breakpoint-xl: #{$breakpoint-xl};
+  --breakpoint-2xl: #{$breakpoint-2xl};
+}

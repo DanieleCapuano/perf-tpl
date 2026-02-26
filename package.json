@@ -1,0 +1,38 @@
+{
+  "name": "perf-tpl",
+  "version": "1.0.0",
+  "description": "High-performance web application template with Vite, React, WebAssembly, Workers, and Node.js backend",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:client\" \"pnpm run dev:server\"",
+    "dev:client": "cd client && pnpm run dev",
+    "dev:server": "cd server && pnpm run dev",
+    "build": "pnpm run build:client && pnpm run build:server",
+    "build:client": "cd client && pnpm run build",
+    "build:server": "cd server && pnpm run build",
+    "build:wasm": "cd client/src/wasm && cargo build --release --target wasm32-unknown-unknown && wasm-bindgen target/wasm32-unknown-unknown/release/*.wasm --out-dir ../../../public/wasm --target web",
+    "preview": "cd client && pnpm run preview",
+    "lint": "pnpm run lint:client && pnpm run lint:server",
+    "lint:client": "cd client && pnpm run lint",
+    "lint:server": "cd server && pnpm run lint",
+    "install:all": "pnpm install && cd client && pnpm install && cd ../server && pnpm install",
+    "seo:analyze": "cd client && pnpm run seo:analyze"
+  },
+  "keywords": [
+    "vite",
+    "react",
+    "webassembly",
+    "workers",
+    "performance",
+    "pwa",
+    "seo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.3"
+  }
+}

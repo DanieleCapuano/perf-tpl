@@ -1,0 +1,16 @@
+# Robots.txt for SEO
+
+User-agent: *
+Allow: /
+
+# Disallow sensitive or unnecessary paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /sw.js
+
+# Sitemap location
+Sitemap: https://yoursite.com/sitemap.xml
+
+# Crawl delay (optional)
+# Crawl-delay: 10

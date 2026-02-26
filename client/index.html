@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="High-performance web application with React, WebAssembly, and modern optimizations">
+  <meta name="keywords" content="performance, react, webassembly, pwa">
+  <meta name="author" content="">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yoursite.com/">
+  <meta property="og:title" content="Performance Template">
+  <meta property="og:description" content="High-performance web application">
+  <meta property="og:image" content="/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://yoursite.com/">
+  <meta property="twitter:title" content="Performance Template">
+  <meta property="twitter:description" content="High-performance web application">
+  <meta property="twitter:image" content="/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdn.example.com">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Prefetch critical resources -->
+  <link rel="prefetch" href="/wasm/wasm_compute.js" as="fetch" crossorigin>
+  <link rel="prefetch" href="/wasm/wasm_compute_bg.wasm" as="fetch" crossorigin>
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="/icon-180x180.png">
+
+  <title>Performance Template</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- Main app script with async module loading -->
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Preload critical CSS (will be injected by Vite in production) -->
+  <!-- Service Worker registration is handled by vite-plugin-pwa -->
+
+  <!-- Performance monitoring (optional) -->
+  <script>
+    // Capture performance metrics
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          // Log or send to analytics
+          if (entry.entryType === 'largest-contentful-paint') {
+            console.log('LCP:', entry.startTime);
+          }
+          if (entry.entryType === 'first-input') {
+            console.log('FID:', entry.processingStart - entry.startTime);
+          }
+        }
+      });
+
+      observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+    }
+
+    // Report Web Vitals
+    if ('performance' in window) {
+      window.addEventListener('load', () => {
+        // Core Web Vitals
+        const paintEntries = performance.getEntriesByType('paint');
+        const navigation = performance.getEntriesByType('navigation')[0];
+
+        console.log('Paint Metrics:', paintEntries);
+        console.log('Navigation:', navigation);
+      });
+    }
+  </script>
+</body>
+
+</html>
