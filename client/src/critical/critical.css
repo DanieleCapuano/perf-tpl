@@ -26,6 +26,8 @@ html {
   width: 100vw;
   position: fixed;
   top: 0;
+  opacity: 1;
+  transition: opacity 0.75s ease-in-out;
 }
 
 
@@ -52,5 +54,5 @@ html {
     overflow: hidden;
 }
 #root:not(:empty) ~ .loading {
-  display: none;
+  opacity: 0;
 }
