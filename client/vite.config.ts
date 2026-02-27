@@ -12,6 +12,39 @@ export default defineConfig({
         inlineCritical(),
         react(),
 
+        // PWA Plugin with Service Worker
+        VitePWA({
+            strategies: 'injectManifest',
+            srcDir: 'src/sw',
+            filename: 'sw.ts',
+            injectManifest: {
+                globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg,gif,webp}'],
+                globIgnores: ['**/wasm/**', '**/wasm-pkg/**'],
+                maximumFileSizeToCacheInBytes: 5000000,
+            },
+            manifestFilename: 'manifest.json',
+            injectRegister: null, // We register manually in critical.ts
+            manifest: {
+                name: 'Performance Template',
+                short_name: 'PerfTpl',
+                description: 'High-performance web application',
+                theme_color: '#ffffff',
+                background_color: '#ffffff',
+                display: 'standalone',
+                icons: [
+                    {
+                        src: '/favicon.png',
+                        sizes: '512x512',
+                        type: 'image/png',
+                    },
+                ],
+            },
+            devOptions: {
+                enabled: true,
+                type: 'module',
+            },
+        }),
+
         // Gzip compression for production builds
         viteCompression({
             verbose: true,
@@ -28,42 +61,6 @@ export default defineConfig({
             threshold: 10240,
             algorithm: 'brotliCompress',
             ext: '.br',
-        }),
-
-        // PWA with custom service worker
-        VitePWA({
-            strategies: 'injectManifest',
-            srcDir: 'src/sw',
-            filename: 'sw.ts',
-            registerType: 'autoUpdate',
-            injectRegister: 'auto',
-            
-            manifest: {
-                name: 'Performance Template',
-                short_name: 'PerfTpl',
-                description: 'High-performance web application template',
-                theme_color: '#242424',
-                background_color: '#242424',
-                display: 'standalone',
-                icons: [
-                    {
-                        src: '/favicon.png',
-                        sizes: '192x192',
-                        type: 'image/png',
-                    },
-                ],
-            },
-            
-            // Exclude WASM files from PWA build analysis
-            injectManifest: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
-                globIgnores: ['**/wasm/**', '**/wasm-pkg/**'],
-            },
-            
-            devOptions: {
-                enabled: true,
-                type: 'module',
-            },
         }),
 
         // Bundle analyzer (runs only in analyze mode)

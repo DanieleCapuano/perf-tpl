@@ -4,9 +4,11 @@
  * 
  * This file is built by Vite before being inlined, so you can use:
  * - TypeScript syntax
- * - Import statements
+ * - Import statements (no virtual modules)
  * - Environment variables (import.meta.env)
  */
+
+import { registerSWCritical } from "./registerSW";
 
 interface BrowserFeatures {
   wasm: boolean;
@@ -14,6 +16,8 @@ interface BrowserFeatures {
   sharedArrayBuffer: boolean;
   serviceWorker: boolean;
 }
+
+registerSWCritical();
 
 // Feature detection
 (function detectFeatures() {

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/update-sw-version.js",
+    "predev": "node scripts/update-sw-version.js && node scripts/copy-sw.cjs",
     "dev": "vite",
     "prebuild": "node scripts/update-sw-version.js",
     "build": "tsc && vite build",
