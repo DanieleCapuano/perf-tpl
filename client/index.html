@@ -54,16 +54,15 @@
 
 <body>
   <div id="root"></div>
+  <div class="loading">
+    <div class="loading-spinner" aria-label="Loading application"></div>
+  </div>
 
   <!-- Main app script with async module loading -->
   <script async type="module" src="/src/main.tsx"></script>
 
   <!-- Preload critical CSS (will be injected by Vite in production) -->
   <!-- Service Worker registration is handled by vite-plugin-pwa -->
-
-  <div class="loading">
-    <div class="loading-spinner" aria-label="Loading application"></div>
-  </div>
 </body>
 
 </html>
