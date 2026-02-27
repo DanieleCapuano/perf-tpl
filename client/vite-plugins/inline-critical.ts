@@ -99,8 +99,8 @@ export function inlineCritical(): Plugin {
 
           // Inject critical JS at start of <body>
           html = html.replace(
-            '<body>',
-            `<body>\n    <script id="critical-js">${criticalJsBundle}</script>`
+            '</body>',
+            `<script id="critical-js">${criticalJsBundle}</script>\n</body>`
           );
 
           return html;
