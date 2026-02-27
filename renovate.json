@@ -16,7 +16,7 @@
       "automerge": false
     },
     {
-      "matchPackageNames": ["eslint"],
+      "matchPackageNames": ["eslint", "@eslint/js"],
       "description": "ESLint v10 is too new - most plugins (react, typescript-eslint) don't support it yet. ESLint v9 is the current stable version with full plugin ecosystem support.",
       "allowedVersions": "< 10"
     }
