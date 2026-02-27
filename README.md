@@ -2,6 +2,12 @@
 
 A production-ready template featuring **Vite + React + WebAssembly (Rust) + Web Workers + Service Workers + Node.js backend**, optimized for performance, SEO, and developer experience. ⚡
 
+**Built to get 100% score on lighthouse**
+![100-100-lighthouse-score](/client/public/img/lighthouse-report.png)
+
+
+----
+
 > 🔥 **Powered by pnpm** - Up to 2x faster installations and significantly reduced disk space usage!
 
 ## ⚡ Why pnpm?
