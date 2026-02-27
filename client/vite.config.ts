@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
+import { inlineCritical } from './vite-plugins/inline-critical';
 import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
+        inlineCritical(),
         react(),
 
         // Gzip compression for production builds

@@ -56,42 +56,14 @@
   <div id="root"></div>
 
   <!-- Main app script with async module loading -->
-  <script type="module" src="/src/main.tsx"></script>
+  <script async type="module" src="/src/main.tsx"></script>
 
   <!-- Preload critical CSS (will be injected by Vite in production) -->
   <!-- Service Worker registration is handled by vite-plugin-pwa -->
 
-  <!-- Performance monitoring (optional) -->
-  <script>
-    // Capture performance metrics
-    if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
-          // Log or send to analytics
-          if (entry.entryType === 'largest-contentful-paint') {
-            console.log('LCP:', entry.startTime);
-          }
-          if (entry.entryType === 'first-input') {
-            console.log('FID:', entry.processingStart - entry.startTime);
-          }
-        }
-      });
-
-      observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
-    }
-
-    // Report Web Vitals
-    if ('performance' in window) {
-      window.addEventListener('load', () => {
-        // Core Web Vitals
-        const paintEntries = performance.getEntriesByType('paint');
-        const navigation = performance.getEntriesByType('navigation')[0];
-
-        console.log('Paint Metrics:', paintEntries);
-        console.log('Navigation:', navigation);
-      });
-    }
-  </script>
+  <div class="loading">
+    <div class="loading-spinner" aria-label="Loading application"></div>
+  </div>
 </body>
 
 </html>
